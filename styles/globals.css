@@ -1,26 +1,126 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Montreal;
+  font-weight: 400;
+  src: url("../public/fonts/montreal/NeueMontreal-Regular.otf");
+}
+@font-face {
+  font-family: Montreal;
+  font-weight: 500;
+  src: url("../public/fonts/montreal/NeueMontreal-Medium.otf");
+}
+@font-face {
+  font-family: Montreal;
+  font-weight: 300;
+  src: url("../public/fonts/montreal/NeueMontreal-Light.otf");
+}
+@font-face {
+  font-family: Montreal;
+  font-weight: 800;
+  src: url("../public/fonts/montreal/NeueMontreal-Bold.otf");
+}
+@font-face {
+  font-family: Montreal;
+  font-weight: 400;
+  src: url("../public/fonts/montreal/NeueMontreal-Regular.otf");
+}
+@font-face {
+  font-family: Montreal;
+  font-weight: 400;
+  src: url("../public/fonts/montreal/NeueMontreal-Regular.otf");
 }
 
+@font-face {
+  font-family: Playfair;
+  font-weight: 400;
+  src: url("../public/fonts//playfair/PlayfairDisplay-Regular.ttf");
+}
+
+@font-face {
+  font-family: Playfair;
+  font-weight: 500;
+  src: url("../public/fonts//playfair/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: Playfair;
+  font-weight: 600;
+  src: url("../public/fonts//playfair/PlayfairDisplay-SemiBold.ttf");
+}
+@font-face {
+  font-family: Playfair;
+  font-weight: 700;
+  src: url("../public/fonts/playfair/PlayfairDisplay-Bold.ttf");
+}
+@font-face {
+  font-family: playfair;
+  font-weight: 800;
+  src: url("../public/fonts//playfair/PlayfairDisplay-ExtraBold.ttf");
+}
+@font-face {
+  font-family: playfair;
+  font-weight: 600;
+  font-style: italic;
+  src: url("../public/fonts/playfair/PlayfairDisplay-SemiBoldItalic.ttf");
+}
+@font-face {
+  font-family: Playfair;
+  font-weight: 700;
+  font-style: italic;
+  src: url("../public/fonts/playfair/PlayfairDisplay-BoldItalic.ttf");
+}
+@font-face {
+  font-family: Playfair;
+  font-weight: 800;
+  font-style: italic;
+  src: url("../public/fonts/playfair/PlayfairDisplay-ExtraBoldItalic.ttf");
+}
+@font-face {
+  font-family: Playfair;
+  font-weight: 400;
+  font-style: italic;
+  src: url("../public/fonts/playfair/PlayfairDisplay-ExtraBold.ttf");
+}
+@font-face {
+  font-family: Playfair;
+  font-weight: 500;
+  font-style: italic;
+  src: url("../public/fonts/playfair/PlayfairDisplay-MediumItalic.ttf");
+}
+@font-face {
+  font-family: Playfair;
+  font-weight: 400;
+  font-style: italic;
+  src: url("../public/fonts/playfair/PlayfairDisplay-Italic.ttf");
+}
+
+
+html {
+  scroll-behavior: auto !important;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* cursor: none !important; */
+  user-select: none;
+}
+
+body {
+  color: white;
+  line-height: 1.2;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: black;
+}
 a {
   color: inherit;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
