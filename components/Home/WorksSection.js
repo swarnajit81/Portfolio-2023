@@ -1,7 +1,10 @@
+import Header from "@components/Common/Header";
+import ImageLink from "@components/Common/ImageLink";
 import RevealImage from "@components/Common/RevealImage";
 import VerticleMarquee from "@components/Common/VerticleMarquee";
-import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect";
-import React, { useRef } from "react";
+import { defaultTransition } from "@utils/index";
+import { useMotionValue, motion, useSpring } from "framer-motion";
+import React, { useRef, useState } from "react";
 
 const WorksSection = ({
   firstLineRef,
@@ -10,12 +13,35 @@ const WorksSection = ({
   imageContainer,
 }) => {
   const workSectionRef = useRef(null);
+  const [gridIsVisible, setGridIsVisible] = useState(false);
+  const gridRef = useRef(null);
 
-  function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-}
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const handleMouseMove = (e) => {
+    if (gridRef?.current) {
+      const speed = -10;
+      const { width, height } = gridRef.current.getBoundingClientRect();
+      const offsetX = e.pageX - width * 0.22;
+      const offsetY = e.pageY - height * 1.3;
+
+      const newTransformX = (offsetX * speed) / 15;
+      const newTransformY = (offsetY * speed) / 50;
+
+      x.set(newTransformX);
+      y.set(newTransformY);
+    }
+  };
+
+  const xMotion = useSpring(x, { stiffness: 400, damping: 90 });
+  const yMotion = useSpring(y, { stiffness: 400, damping: 90 });
+
+  // function getRandomInt(min, max) {
+  //   min = Math.ceil(min);
+  //   max = Math.floor(max);
+  //   return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  // }
 
   const positionClasses = [
     "top-[50vh] left-[10vw]",
@@ -30,9 +56,11 @@ const WorksSection = ({
   return (
     <div
       ref={workSectionRef}
-      className="w-full h-full uppercase relative font-montreal"
+      style={{ contentVisibility: "auto" }}
+      className="w-screen  h-[calc(1vh*100)] transition-all duration-500 uppercase overflow-hidden relative font-montreal"
     >
-      {imageArr?.map((el, i) => (
+      <Header view={gridIsVisible} toggleView={setGridIsVisible} />
+      {/* {imageArr?.map((el, i) => (
         <div
           id="image"
           style={{ perspective: "3000px" , transform: `rotate(${getRandomInt(-30 , 30)}deg)` }}
@@ -48,9 +76,46 @@ const WorksSection = ({
             className="w-full h-full  group-hover:scale-110 cursor-pointer  transition-all duration-300"
           />
         </div>
-      ))}
+      ))} */}
+      {gridIsVisible && (
+        <motion.div
+          ref={gridRef}
+          onMouseMove={handleMouseMove}
+          transition={defaultTransition}
+          style={{ contentVisibility: "auto", x: xMotion, y: yMotion }}
+          className="flex items-center justify-center absolute w-[250vw] h-[210vh] top-[calc(((1vh*100)-210vh)/2)] left-[calc((100vw-250vw)/2)] "
+        >
+          <div className="grid grid-cols-5">
+            {imageArr?.map((el, index) => (
+              <div className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]">
+                <div className=" w-full h-full relative">
+                  <ImageLink elm={el} index={index} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+      {!gridIsVisible && (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(${imageArr?.length} , 1fr)`,
+          }}
+          className={`h-[calc(1vh*100)] items-center overflow-x-auto overflow-y-hidden px-[10vmin]`}
+        >
+          {imageArr?.map((el, index) => (
+            <div className="w-[70vmin] h-[70vmin] mx-[5vw]">
+              <ImageLink elm={el} index={index} />
+            </div>
+          ))}
+        </div>
+      )}
 
-      <div className="aboslute h-full left-0 top-0">
+      <div
+        style={{ position: "absolute" }}
+        className="aboslute h-full left-0 top-0 bg-black"
+      >
         <VerticleMarquee workSectionRef={workSectionRef} />
       </div>
       <div className="mix-blend-difference text-[7vw] absolute w-full h-full  pointer-events-none flex justify-center items-center  top-0 left-0 leading-[6.5vw]">
@@ -77,7 +142,7 @@ const images = [
   "/images/view.png",
 ];
 
-const imageArr  = [
+const imageArr = [
   {
     text: "Angels",
     img: "/images/angels.png",
@@ -106,4 +171,32 @@ const imageArr  = [
     text: "View Management",
     img: "/images/view.png",
   },
-]
+  {
+    text: "Angels",
+    img: "/images/angels.png",
+  },
+  {
+    text: "City Models",
+    img: "/images/citymodels.png",
+  },
+  {
+    text: "Four models",
+    img: "/images/fourmodels.jpg",
+  },
+  {
+    text: "IMG Models",
+    img: "/images/imgmodels.png",
+  },
+  {
+    text: "Lions",
+    img: "/images/lions.png",
+  },
+  {
+    text: "Nevs",
+    img: "/images/nevsmodels.png",
+  },
+  {
+    text: "View Management",
+    img: "/images/view.png",
+  },
+];

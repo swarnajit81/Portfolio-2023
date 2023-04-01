@@ -47,7 +47,7 @@ const VerticleMarquee = ({ workSectionRef }) => {
   const marqueeRightArr = generateMarquee("swarnajit 2023portfolio");
 
   return (
-    <div className=" h-full border-x-[1px] border-x-[white] uppercase  font-montreal flex gap-[0.5px] px-[0.5rem] text-[2rem] w-max">
+    <div className=" h-full border-x-[1px] border-x-[white] uppercase  font-montreal flex gap-[0.5px] px-[0.5rem] text-[1.4rem] w-max">
       <div
         ref={marqueeLeft}
         className="flex flex-col gap-[15px] odd:text-royal-orange even:text-white"
