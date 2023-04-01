@@ -36,14 +36,14 @@ const AboutSection = ({firstSent , secondSent , aboutSectionRef , aboutImageRef}
   return (
     <div ref={aboutSectionRef} className="w-full h-full flex items-center relative">
       <div className="absolute left-0 top-0 h-full border-x-[1px] border-x-[white] uppercase whitespace-nowrap flex-nowrap gap-[15px]  flex flex-col font-montreal px-[0.5rem] text-[2rem] w-max">
-        {aboutMarquee.map((el) => (
-          <span id="aboutMarquee" className="text-white text-[1.4rem]" style={{ writingMode: "vertical-rl" }}>
+        {aboutMarquee.map((el, i) => (
+          <span key={i} id="aboutMarquee" className="text-white text-[1.4rem]" style={{ writingMode: "vertical-rl" }}>
             {el}
           </span>
         ))}
       </div>
       <div className="pl-[25rem] mix-blend- mix-blend-difference text-[7rem] font-montreal " >
-        <p ref={firstSent}> <span className="font-playfair italic" >Hey!</span> I'm Swarnajit </p>
+        <p ref={firstSent}> <span className="font-playfair italic" >Hey!</span> I&apos;m Swarnajit </p>
         <p>a twenty-five years  <span className="font-playfair italic" >old</span></p>
         <p   ref={secondSent} >front-end developer. Currently</p>
         <p>based in <s>France</s> India</p>

@@ -14,8 +14,8 @@ const MoreAboutMe = ({ bottomMaqueeRef, MAMSection }) => {
         ref={bottomMaqueeRef}
         className="w-full py-[1rem] flex flex-nowrap whitespace-nowrap font-montreal"
       >
-        {getMaqueeText("Benefits Stack &").map((el) => (
-          <div className="text-[4vw] flex gap-[1vw]">
+        {getMaqueeText("Benefits Stack &").map((el ,i) => (
+          <div key={i} className="text-[4vw] flex gap-[1vw]">
             <span className="pl-[1.5vw]">{el?.split(" ")[0]}</span>
             <span className="font font-playfair italic">
               {el?.split(" ")[1]}
@@ -44,7 +44,7 @@ const MoreAboutMe = ({ bottomMaqueeRef, MAMSection }) => {
         </p>
         <div className="flex flex-wrap gap-[2rem] itmes-start">
           {skills?.map((el, i) => (
-            <div className="max-w-[25rem]">
+            <div key={i} className="max-w-[25rem]">
               <div className="flex items-end text-royal-orange gap-[10px]">
                 <span className="text-[1.2rem]">0{i + 1}.</span>
                 <p className="text-[1.6rem] text-white uppercase">{el.title}</p>

@@ -87,7 +87,7 @@ const WorksSection = ({
         >
           <div className="grid grid-cols-5">
             {imageArr?.map((el, index) => (
-              <div className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]">
+              <div key={index} className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]">
                 <div className=" w-full h-full relative">
                   <ImageLink elm={el} index={index} />
                 </div>
@@ -105,7 +105,7 @@ const WorksSection = ({
           className={`h-[calc(1vh*100)] items-center overflow-x-auto overflow-y-hidden px-[10vmin]`}
         >
           {imageArr?.map((el, index) => (
-            <div className="w-[70vmin] h-[70vmin] mx-[5vw]">
+            <div key={index} className="w-[70vmin] h-[70vmin] mx-[5vw]">
               <ImageLink elm={el} index={index} />
             </div>
           ))}

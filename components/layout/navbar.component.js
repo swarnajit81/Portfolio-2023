@@ -8,8 +8,8 @@ const Navbar = () => {
         <h2 className="cursor-pointer">Swarnajit.</h2>
         <InfinteMarquee />
         <div className="flex gap-[1.5rem] uppercase cursor-pointer">
-          {links.map((el) => (
-            <h2>{el.text}</h2>
+          {links.map((el , i) => (
+            <h2  key={i}>{el.text}</h2>
           ))}
         </div>
       </div>

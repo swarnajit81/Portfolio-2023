@@ -1,10 +1,8 @@
 import { socialLinks } from "@utils/index";
-import Link from "next/link";
-import React, { useRef } from "react";
+import React from "react";
 
 const Contact = ({ contactSection, header }) => {
-  const text1 = useRef(null);
-  const text2 = useRef(null);
+
 
   return (
     <div
@@ -41,8 +39,8 @@ const Contact = ({ contactSection, header }) => {
         <p className="text-[#afafaf]">to follow my new adventures!</p>
       </div>
       <div className="text-[1.2rem] uppercase flex flex-wrap items-center absolute bottom-10 left-0 gap-[1.5rem]">
-        {socialLinks.map((el) => (
-          <a href={el.link} target="_blank">
+        {socialLinks.map((el ,i) => (
+          <a key={i} rel="noreferrer" href={el.link} target="_blank">
             {el.text}
           </a>
         ))}

@@ -52,8 +52,8 @@ const VerticleMarquee = ({ workSectionRef }) => {
         ref={marqueeLeft}
         className="flex flex-col gap-[15px] odd:text-royal-orange even:text-white"
       >
-        {marqueeLeftArr.map((el) => (
-          <div id="marqueeLeft" className="flex gap-[15px] flex-col">
+        {marqueeLeftArr.map((el , i) => (
+          <div key={i} id="marqueeLeft" className="flex gap-[15px] flex-col">
             <span className="text-white" style={{ writingMode: "vertical-rl" }}>
               {el.split(" ")[0]}
             </span>
@@ -70,8 +70,8 @@ const VerticleMarquee = ({ workSectionRef }) => {
         ref={marqueeRight}
         className="flex flex-col gap-[15px] even:text-royal-orange odd:text-white"
       >
-        {marqueeRightArr.map((el) => (
-          <div id="marqueeRight" className="flex gap-[15px] flex-col">
+        {marqueeRightArr.map((el ,i) => (
+          <div key={i} id="marqueeRight" className="flex gap-[15px] flex-col">
             <span
               className="text-royal-orange"
               style={{ writingMode: "vertical-rl" }}
