@@ -13,7 +13,7 @@ const WorksSection = ({
   imageContainer,
 }) => {
   const workSectionRef = useRef(null);
-  const [gridIsVisible, setGridIsVisible] = useState(false);
+  const [gridIsVisible, setGridIsVisible] = useState(true);
   const gridRef = useRef(null);
 
   const x = useMotionValue(0);

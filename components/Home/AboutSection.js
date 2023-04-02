@@ -42,7 +42,7 @@ const AboutSection = ({firstSent , secondSent , aboutSectionRef , aboutImageRef}
           </span>
         ))}
       </div>
-      <div className="pl-[25rem] mix-blend- mix-blend-difference text-[7rem] font-montreal " >
+      <div className="pl-[25rem] mix-blend- mix-blend-difference text-[6vw] font-montreal " >
         <p ref={firstSent}> <span className="font-playfair italic" >Hey!</span> I&apos;m Swarnajit </p>
         <p>a twenty-five years  <span className="font-playfair italic" >old</span></p>
         <p   ref={secondSent} >front-end developer. Currently</p>
