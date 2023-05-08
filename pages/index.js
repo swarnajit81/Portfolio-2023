@@ -135,6 +135,7 @@ export default function Home() {
       ref={containerRef}
       className={`w-[570vw] flex  h-[100svh] overflow-hidden flex-nowrap overscroll-none`}
     >
+<h1>Elum lum lubdin dibi dibi daaa </h1>
       <section
         ref={landingSectionContainer}
         id="section"
