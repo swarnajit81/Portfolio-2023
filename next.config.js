@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 
+const { redirect } = require('next/dist/server/api-utils');
+
 const securityHeaders = [
   {
     key: "X-DNS-Prefetch-Control",
@@ -25,10 +27,20 @@ const securityHeaders = [
     key: "Cache-Control",
     value: "s-maxage=1, stale-while-revalidate=59",
   },
+
 ];
 
 const nextConfig = {
   reactStrictMode: true,
+  async redirects (){
+    return [
+      {
+        source: "/lander",
+        desitnation: "/",
+        permanent: true
+      }
+    ]
+  },
   async headers(){
     return [
       {
