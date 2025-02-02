@@ -34,11 +34,11 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects (){
     return [
-      {
+       {
         source: "/lander",
-        desitnation: "/",
-        permanent: true
-      }
+        destination: "/",
+        permanent: true,
+      },
     ]
   },
   async headers(){
