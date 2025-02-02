@@ -19,44 +19,54 @@ export const defaultTransition = {
 };
 
 export const imageArr = [
-  {
-    text: "Angels",
-    img: "/images/angels.png",
-  },
-  {
-    text: "City Models",
-    img: "/images/citymodels.png",
-  },
-
-  {
-    text: "IMG Models",
-    img: "/images/imgmodels.png",
-  },
-  {
-    text: "Lions",
-    img: "/images/lions.png",
-  },
-  {
-    text: "Nevs",
-    img: "/images/nevsmodels.png",
-  },
-  {
-    text: "View Management",
-    img: "/images/view.png",
-  },
-  {
+   {
     text: "The Rebellion",
     img: "/images/rebellion.png",
+    link: "https://therebellionmgmt.com/"
   },
 
   {
     text: "WModels",
     img: "/images/wmgmt.png",
+    link: "https://www.wmgmt.co.uk/"
   },
   {
     text: "Prodigy",
     img: "/images/prodigy.png",
+    link: "https://www.prodigymanagement.com/"
   },
+  {
+    text: "Angels",
+    img: "/images/angels.png",
+    link: "https://www.angelsproject.com/"
+  },
+  {
+    text: "City Models",
+    img: "/images/citymodels.png",
+    link: "https://www.city-models.com/",
+  },
+
+  {
+    text: "IMG Models",
+    img: "/images/imgmodels.png",
+    link: "https://imgmodels.com/"
+  },
+  {
+    text: "Lions",
+    img: "/images/lions.png",
+    link: "https://www.thelionsmanagement.com/"
+  },
+  {
+    text: "Nevs",
+    img: "/images/nevsmodels.png",
+    url:"https://www.nevsmodels.co.uk/"
+  },
+  {
+    text: "View Management",
+    img: "/images/view.png",
+    link: "https://www.viewmanagement.com/"
+  },
+ 
 ];
 
 const words = [

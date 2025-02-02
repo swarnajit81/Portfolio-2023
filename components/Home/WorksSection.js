@@ -74,21 +74,22 @@ const WorksSection = ({
         >
           <div className="grid grid-cols-5">
             {imageArr?.map((el, index) => (
-              <a href={el.link} key={el.text}>
-                <motion.div
-                  transition={{
-                    duration: 1.25,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                  }}
-                  layoutId={`content-${index}`}
-                  key={`content-${index}`}
-                  className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]"
-                >
-                  <div className=" w-full h-full relative">
-                    <ImageLink elm={el} index={index} />
-                  </div>
-                </motion.div>
-              </a>
+              <motion.a
+                href={el.link}
+                target="_blank"
+                rel="no-refferer"
+                transition={{
+                  duration: 1.25,
+                  ease: [0.43, 0.13, 0.23, 0.96],
+                }}
+                layoutId={`content-${index}`}
+                key={`content-${index}`}
+                className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]"
+              >
+                <div className=" w-full h-full relative">
+                  <ImageLink elm={el} index={index} />
+                </div>
+              </motion.a>
             ))}
           </div>
         </motion.div>
@@ -103,15 +104,18 @@ const WorksSection = ({
           className={`h-[calc(1vh*100)] will-change-transform no-scroll-bar items-center overflow-x-auto overflow-y-hidden px-[10vmin]`}
         >
           {imageArr?.map((el, index) => (
-            <motion.div
+            <motion.a
               layoutId={`content-${index}`}
               id={`content-${index}`}
               transition={{ duration: 1.25, ease: [0.43, 0.13, 0.23, 0.96] }}
               key={index}
+              href={el.link}
+              target="_blank"
+              rel="no-refferer"
               className="w-[70vmin] grid place-items-center h-[70vmin] mx-[5vw]"
             >
               <ImageLink elm={el} index={index} />
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       )}

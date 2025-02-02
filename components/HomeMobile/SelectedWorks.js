@@ -51,9 +51,12 @@ const WorkCard = ({ elm }) => {
   }, []); // Remove `isVisible` from dependencies
 
   return (
-    <div
+    <a
       ref={imageContainer}
       key={elm.text}
+      href={elm.link}
+      target="_blank"
+      rel="no-refferer"
       className="w-full flex flex-col gap-[1rem] uppercase"
     >
       <span>{elm.text}</span>
@@ -80,6 +83,6 @@ const WorkCard = ({ elm }) => {
           <ArrowRight />
         </div>
       </div>
-    </div>
+    </a>
   );
 };
