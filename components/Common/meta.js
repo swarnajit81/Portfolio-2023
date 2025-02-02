@@ -7,7 +7,7 @@ const Meta = ({
   keywords = `
 web development, interactive design, creative coding, immersive web experiences, UI/UX design, frontend development, animations, performance optimization, digital artistry, abstract art, problem-solving, web animations, user experience, creative solutions, portfolio showcase, web canvas, independent developer, web aesthetics, artistic web design, engaging websites`,
   description = "Passionate artist and web creator crafting immersive digital experiences with a focus on interaction, animations, and performance. With 4+ years of experience across various tech stacks, I bring refined, creative solutions to help enthusiasts and businesses push boundaries. Let’s collaborate to make something extraordinary.",
-  imgContent = "logo.png",
+  imgContent = "https://swarnajit.space/images/logo.png",
 }) => {
   const router = useRouter();
   return (
@@ -23,6 +23,8 @@ web development, interactive design, creative coding, immersive web experiences,
       <meta property="og:title" content={title} />
       <meta property="og:type" content="article" />
       <meta property="og:image" content={imgContent} />
+      <meta property="og:image:width" content="500" />
+      <meta property="og:image:height" content="500" />
       <meta
         property="og:url"
         content={"https://swarnajit.space" + router.asPath}
