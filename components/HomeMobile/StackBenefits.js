@@ -1,29 +1,36 @@
-import React from 'react'
+import React from "react";
 
 const StackBenefits = () => {
   return (
-    <div className='w-full flex flex-col' >
-    <div className='px-5   pb-[3rem] border-b-[1px] border-white text-[1.2rem] font-light' >
-          I usually work in vanilla javascript without frameworks for small
-          projects, allowing me a complete freedom on the architecture, I prefer using convex or drizzle with postgres for my content management or backend, GSAP and framer-motion for animations
-          with some glimpse of Three.js. For bigger works I usually Next.js and React.
-    </div>
-    <div className="flex flex-col font-light gap-[2rem] itmes-start">
-          {skills?.map((el, i) => (
-            <div key={i} className="w-full px-5  py-[3rem] border-[#fff]  last:border-[transparent] border-b-[1px]">
-              <div className="flex font-normal items-end text-royal-orange gap-[10px]">
-                <span className="text-[1rem]">0{i + 1}.</span>
-                <p className="text-[1.2rem] font-normal text-white uppercase">{el.title}</p>
-              </div>
-              <p className="mt-[1.5rem] text-[1.2rem] ">{el.para}</p>
+    <div id="stack-mobile" className="w-full flex flex-col">
+      <div className="px-5   pb-[3rem] border-b-[1px] border-white text-[1.2rem] font-light">
+        I usually work in vanilla javascript without frameworks for small
+        projects, allowing me a complete freedom on the architecture, I prefer
+        using convex or drizzle with postgres for my content management or
+        backend, GSAP and framer-motion for animations with some glimpse of
+        Three.js. For bigger works I usually Next.js and React.
+      </div>
+      <div className="flex flex-col font-light gap-[2rem] itmes-start">
+        {skills?.map((el, i) => (
+          <div
+            key={i}
+            className="w-full px-5  py-[3rem] border-[#fff]  last:border-[transparent] border-b-[1px]"
+          >
+            <div className="flex font-normal items-end text-royal-orange gap-[10px]">
+              <span className="text-[1rem]">0{i + 1}.</span>
+              <p className="text-[1.2rem] font-normal text-white uppercase">
+                {el.title}
+              </p>
             </div>
-          ))}
-        </div>
+            <p className="mt-[1.5rem] text-[1.2rem] ">{el.para}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default StackBenefits
+export default StackBenefits;
 
 const skills = [
   {

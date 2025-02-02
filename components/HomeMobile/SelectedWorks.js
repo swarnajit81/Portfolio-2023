@@ -4,7 +4,7 @@ import { ArrowRight } from "react-feather";
 
 const SelectedWorks = () => {
   return (
-    <div className="w-full min-h-screen px-5">
+    <div id="work-mobile" className="w-full min-h-screen px-5">
       <p className="text-[12vw] uppercase text-center">
         Selected <br /> <span className="font-playfair italic">Works</span>
       </p>

@@ -28,7 +28,7 @@ const AboutSectionMobile = () => {
     </p>,
   ];
   return (
-    <div className="w-full px-5">
+    <div id="about-mobile" className="w-full px-5">
       <h2 class="text-[12vw]">
         <span className="font-playfair italic">Hey!</span> I am Swarnajit, a
         twenty-six years&nbsp;<span className="font-playfair italic">old</span>

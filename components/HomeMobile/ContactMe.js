@@ -3,13 +3,16 @@ import React from "react";
 
 const ContactMe = () => {
   return (
-    <div className="pt-[5rem] pb-[2rem] flex flex-col items-center gap-[1.5rem]">
+    <div
+      id="contact-mobile"
+      className="pt-[5rem] pb-[2rem] flex flex-col items-center gap-[1.5rem]"
+    >
       <h3 className="text-center text-[8vw] uppercase">
         Want to discuss a<br />{" "}
         <span className="italic font-bold font-playfair">new Project ?</span>
       </h3>
       <a
-        href="mailto:admin@swarnajit.xyz"
+        href="mailto:swarnajit.bhowmick.81@gmail.com"
         className="text-center mx-auto w-[minmax(200px , 100%)] rounded-[30px] py-[0.7rem] px-5 uppercase border-[1px] bg-royal-orange"
       >
         send me a mail

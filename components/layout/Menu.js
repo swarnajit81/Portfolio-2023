@@ -4,12 +4,15 @@ import { gsap } from "gsap";
 const menuItems = [
   {
     text: "Projects",
+    id: "work-mobile",
   },
   {
     text: "About",
+    id: "about-mobile",
   },
   {
     text: "Contact",
+    id: "contact-mobile",
   },
 ];
 
@@ -52,6 +55,18 @@ const Menu = ({ isMenuOpend, setIsMenuOpend }) => {
     }
   }, [isMenuOpend]);
 
+  const scrollToLink = (elm) => {
+    const targetElement = document.getElementById(elm.id);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      console.error(`Element with id "${elm.id}" not found.`);
+    }
+
+    setIsMenuOpend(false);
+  };
+
   return (
     <div
       ref={menuContainerRef}
@@ -65,12 +80,13 @@ const Menu = ({ isMenuOpend, setIsMenuOpend }) => {
       </p>
       <div className="w-full h-full flex flex-col items-center justify-center">
         {menuItems.map((menuItem) => (
-          <a
+          <div
+            onClick={() => scrollToLink(menuItem)}
             className="text-[4rem] font-[300] tracking-wider"
             key={menuItem.text}
           >
             {menuItem.text}
-          </a>
+          </div>
         ))}
       </div>
       <div

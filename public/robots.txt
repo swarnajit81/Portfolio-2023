@@ -1,0 +1,6 @@
+Sitemap: https://www.swarnajit.space/sitemap.xml
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
