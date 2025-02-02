@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        lobster: ["Lobster"],
         playfair: ["Playfair"],
         montreal: ["Montreal"],
       },
@@ -38,11 +39,20 @@ module.exports = {
           "0%": { filter: "blur(5px)" },
           "100%": { filter: "blur(0px)" },
         },
+        "spin-slow": {
+          "from" : {
+            transform: "rotate(0deg)"
+          },
+          "to": {
+            transform: "rotate(360deg)"
+          }
+        },
       },
       animation: {
         fadeIn: "fadeIn 300ms",
         blur: "blur 0.3s linear",
         marquee: "marquee 10s linear infinite",
+        "spin-slow": "spin-slow 10s linear infinite"
       },
     },
   },

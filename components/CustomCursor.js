@@ -4,7 +4,7 @@ import { useState, useEffect, useContext } from "react";
 const Cursor = () => {
   const { cursorStyle } = useContext(AppContext);
 
-  console.log(cursorStyle);
+  // console.log(cursorStyle);
 
   const [mousePos, setMousePos] = useState({
     x: 400,

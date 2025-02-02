@@ -1,8 +1,9 @@
 import Header from "@components/Common/Header";
 import ImageLink from "@components/Common/ImageLink";
 import RevealImage from "@components/Common/RevealImage";
+import ScrollIndicator from "@components/Common/ScrollIndicator";
 import VerticleMarquee from "@components/Common/VerticleMarquee";
-import { defaultTransition } from "@utils/index";
+import { defaultTransition, imageArr } from "@utils/index";
 import { useMotionValue, motion, useSpring } from "framer-motion";
 import React, { useRef, useState } from "react";
 
@@ -14,6 +15,7 @@ const WorksSection = ({
 }) => {
   const workSectionRef = useRef(null);
   const [gridIsVisible, setGridIsVisible] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const gridRef = useRef(null);
 
   const x = useMotionValue(0);
@@ -37,22 +39,6 @@ const WorksSection = ({
   const xMotion = useSpring(x, { stiffness: 400, damping: 90 });
   const yMotion = useSpring(y, { stiffness: 400, damping: 90 });
 
-  // function getRandomInt(min, max) {
-  //   min = Math.ceil(min);
-  //   max = Math.floor(max);
-  //   return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-  // }
-
-  const positionClasses = [
-    "top-[50vh] left-[10vw]",
-    "top-[15vh] left-[50vw]",
-    "top-[60vh] left-[60vw]",
-    "top-[20vh] left-[20vw]",
-    "top-[45vh] left-[70vw]",
-    "top-[80vh] left-[30vw]",
-    "top-[20vh] left-[80vw]",
-  ];
-
   return (
     <div
       ref={workSectionRef}
@@ -60,6 +46,7 @@ const WorksSection = ({
       className="w-screen  h-[calc(1vh*100)] transition-all duration-500 uppercase overflow-hidden relative font-montreal"
     >
       <Header view={gridIsVisible} toggleView={setGridIsVisible} />
+      <ScrollIndicator {...{ isGridVisible: gridIsVisible }} />
       {/* {imageArr?.map((el, i) => (
         <div
           id="image"
@@ -83,31 +70,48 @@ const WorksSection = ({
           onMouseMove={handleMouseMove}
           transition={defaultTransition}
           style={{ contentVisibility: "auto", x: xMotion, y: yMotion }}
-          className="flex items-center justify-center absolute w-[250vw] h-[210vh] top-[calc(((1vh*100)-210vh)/2)] left-[calc((100vw-250vw)/2)] "
+          className="flex will-change-transform items-center justify-center absolute w-[250vw] h-[210vh] top-[calc(((1vh*100)-210vh)/2)] left-[calc((100vw-250vw)/2)] "
         >
           <div className="grid grid-cols-5">
             {imageArr?.map((el, index) => (
-              <div key={index} className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]">
-                <div className=" w-full h-full relative">
-                  <ImageLink elm={el} index={index} />
-                </div>
-              </div>
+              <a href={el.link} key={el.text}>
+                <motion.div
+                  transition={{
+                    duration: 1.25,
+                    ease: [0.43, 0.13, 0.23, 0.96],
+                  }}
+                  layoutId={`content-${index}`}
+                  key={`content-${index}`}
+                  className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]"
+                >
+                  <div className=" w-full h-full relative">
+                    <ImageLink elm={el} index={index} />
+                  </div>
+                </motion.div>
+              </a>
             ))}
           </div>
         </motion.div>
       )}
       {!gridIsVisible && (
         <div
+          id="grid-container"
           style={{
             display: "grid",
             gridTemplateColumns: `repeat(${imageArr?.length} , 1fr)`,
           }}
-          className={`h-[calc(1vh*100)] items-center overflow-x-auto overflow-y-hidden px-[10vmin]`}
+          className={`h-[calc(1vh*100)] will-change-transform no-scroll-bar items-center overflow-x-auto overflow-y-hidden px-[10vmin]`}
         >
           {imageArr?.map((el, index) => (
-            <div key={index} className="w-[70vmin] h-[70vmin] mx-[5vw]">
+            <motion.div
+              layoutId={`content-${index}`}
+              id={`content-${index}`}
+              transition={{ duration: 1.25, ease: [0.43, 0.13, 0.23, 0.96] }}
+              key={index}
+              className="w-[70vmin] grid place-items-center h-[70vmin] mx-[5vw]"
+            >
               <ImageLink elm={el} index={index} />
-            </div>
+            </motion.div>
           ))}
         </div>
       )}
@@ -140,63 +144,4 @@ const images = [
   "/images/lions.png",
   "/images/nevsmodels.png",
   "/images/view.png",
-];
-
-const imageArr = [
-  {
-    text: "Angels",
-    img: "/images/angels.png",
-  },
-  {
-    text: "City Models",
-    img: "/images/citymodels.png",
-  },
-  {
-    text: "Four models",
-    img: "/images/fourmodels.jpg",
-  },
-  {
-    text: "IMG Models",
-    img: "/images/imgmodels.png",
-  },
-  {
-    text: "Lions",
-    img: "/images/lions.png",
-  },
-  {
-    text: "Nevs",
-    img: "/images/nevsmodels.png",
-  },
-  {
-    text: "View Management",
-    img: "/images/view.png",
-  },
-  {
-    text: "Angels",
-    img: "/images/angels.png",
-  },
-  {
-    text: "City Models",
-    img: "/images/citymodels.png",
-  },
-  {
-    text: "Four models",
-    img: "/images/fourmodels.jpg",
-  },
-  {
-    text: "IMG Models",
-    img: "/images/imgmodels.png",
-  },
-  {
-    text: "Lions",
-    img: "/images/lions.png",
-  },
-  {
-    text: "Nevs",
-    img: "/images/nevsmodels.png",
-  },
-  {
-    text: "View Management",
-    img: "/images/view.png",
-  },
 ];

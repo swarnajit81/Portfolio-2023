@@ -9,6 +9,7 @@ import AboutSection from "@components/Home/AboutSection";
 import AboutMe from "@components/Home/AboutMe";
 import MoreAboutMe from "@components/Home/MoreAboutMe";
 import Contact from "@components/Home/Contact";
+import HomeMobileSection from "@components/HomeMobile/index"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +32,8 @@ export default function Home() {
 
 
   useIsomorphicLayoutEffect(() => {
+    if (window.innerWidth < 1024) return;
+    
     let maxWidth;
 
     const ctx = gsap.context((self) => {
@@ -130,10 +133,11 @@ export default function Home() {
   }, []);
 
   return (
+    <>
     <div
       id="wrapper"
       ref={containerRef}
-      className={`w-[570vw] flex  h-[100svh] overflow-hidden flex-nowrap overscroll-none`}
+      className={`w-[570vw] hidden lg:flex  h-[100svh] overflow-hidden flex-nowrap overscroll-none`}
     >
 <h1>Elum lum lubdin dibi dibi daaa </h1>
       <section
@@ -143,7 +147,7 @@ export default function Home() {
       >
         <LandingSection />
       </section>
-      <section ref={workSectionRef} id="section" className="w-[100vw] h-full ">
+      <section ref={workSectionRef} id="work-section" className="w-[100vw] h-full ">
         <WorksSection
           firstLineRef={firstLineRef}
           secondLineRef={secondLineRef}
@@ -151,7 +155,7 @@ export default function Home() {
           imageContainer={imageContainer}
         />
       </section>
-      <section className="w-[110vw] h-full ">
+      <section id="about-section" className="w-[110vw] h-full ">
         <AboutSection aboutImageRef={aboutImageRef}  aboutSectionRef={aboutSectionRef} firstSent={firstSent} secondSent={secondSent} />
       </section>
        <section className="w-[60vw] h-full ">
@@ -160,9 +164,11 @@ export default function Home() {
        <section className="w-[100vw] h-full ">
         <MoreAboutMe bottomMaqueeRef={bottomMarqueeRef} MAMSection={MAMSectionRef} />
       </section>
-      <section className="w-[100vw] h-full ">
+      <section id="contact-section" className="w-[100vw] h-full ">
         <Contact header={header} contactSection={contactSection} />
       </section>
     </div>
+    <HomeMobileSection />
+    </>
   );
 }

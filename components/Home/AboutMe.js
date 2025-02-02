@@ -6,10 +6,7 @@ const AboutMe = () => {
       <div className="w-[80%] mx-auto text-[1.4rem] h-full">
         <div className="w-full max-w-[50rem] pt-[20%]">
           <p>
-            I&apos;ve always wanted to create new things, unique experiences, getting
-            into web development changed a lot of things for me, and since then,
-            I try to push my work to new horizons with each project, always
-            putting quality first.
+            I&apos;ve always been an artist, an admirer of mysticism and abstract arts. And creating immersive web experiences that leaves user itself in awe, is an art which has been justified. I thrive for that awe considering me being the artist and creator of such web canvas. As Nietzsche said , <q>art is the highest form of self-expression and a way to affirm life</q>
           </p>
         </div>
         <div className="max-w-[30rem] ml-auto mt-auto flex items-end h-[60svh]">

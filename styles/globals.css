@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: Lobster;
+  font-weight: 400;
+  src: url("../public/fonts/lobster/Lobster-Regular.ttf");
+}
+
+@font-face {
   font-family: Montreal;
   font-weight: 400;
   src: url("../public/fonts/montreal/NeueMontreal-Regular.otf");
@@ -97,9 +103,9 @@
   src: url("../public/fonts/playfair/PlayfairDisplay-Italic.ttf");
 }
 
-
 html {
   scroll-behavior: auto !important;
+  scrollbar-gutter: stable;
 }
 
 * {
@@ -108,6 +114,7 @@ html {
   box-sizing: border-box;
   /* cursor: none !important; */
   user-select: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -123,4 +130,58 @@ a {
   text-decoration: none;
 }
 
+.scroll {
+  animation: scroll-to-left 5s infinite linear;
+}
+@keyframes scroll-to-left {
+  to {
+    transform: translateX(calc(-100% - 10px));
+  }
+}
 
+.text-stroke {
+  -webkit-text-stroke: 0.5px white;
+  top: 50.5%;
+  -webkit-text-fill-color: transparent;
+}
+.dropshadow {
+  filter: drop-shadow(0 0 3px #d83503);
+}
+
+.card {
+  animation: grow both  linear(
+        0 0%,
+        0.0027 3.64%,
+        0.0106 7.29%,
+        0.0425 14.58%,
+        0.0957 21.87%,
+        0.1701 29.16%,
+        0.2477 35.19%,
+        0.3401 41.23%,
+        0.5982 55.18%,
+        0.7044 61.56%,
+        0.7987 68.28%,
+        0.875 75%,
+        0.9297 81.25%,
+        0.9687 87.5%,
+        0.9922 93.75%,
+        1 100%
+      );
+  animation-timeline: view(inline);
+}
+.card {
+  width: clamp(280px, 30vw, 350px)
+}
+
+@keyframes grow {
+  50% {
+    width: clamp(350px, 70vw, 600px);
+  }
+}
+
+.no-scroll-bar {
+scrollbar-color: red black;
+  scrollbar-width: thin;
+
+  
+}

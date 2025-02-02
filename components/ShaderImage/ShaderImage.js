@@ -1,9 +1,10 @@
-
 import * as THREE from "three";
 import React, { useRef, Suspense } from "react";
 import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
-import { shaderMaterial } from "@react-three/drei";
+import { shaderMaterial, useTexture } from "@react-three/drei";
 import glsl from "babel-plugin-glsl/macro";
+import { EffectComposer } from "@react-three/postprocessing";
+import { Fluid } from "@whatisjery/react-fluid-distortion";
 
 const WaveShaderMaterial = shaderMaterial(
   // Uniform
@@ -61,16 +62,17 @@ const Wave = () => {
   const ref = useRef();
   useFrame(({ clock }) => (ref.current.uTime = clock.getElapsedTime()));
 
-  const [image] = useLoader(THREE.TextureLoader, [
-    "https://images.unsplash.com/photo-1534312527009-56c7016453e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80",
-  ]);
+  const image = useTexture(
+    "https://images.unsplash.com/photo-1534312527009-56c7016453e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"
+  );
+  
 
   return (
     <mesh>
-      <planeBufferGeometry args={[0.6, 0.8, 50, 50]} />
+      <planeGeometry args={[0.6, 0.8, 50, 50]} />
       <waveShaderMaterial
         side={THREE.DoubleSide}
-        uColor={"hotpink"}
+        uColor={"#D83503"}
         ref={ref}
         uTexture={image}
       />
@@ -84,14 +86,16 @@ const Scene = () => {
       <Suspense fallback={"loading..."}>
         <Wave />
       </Suspense>
+      <EffectComposer>
+        <Fluid fluidColor="#D83503" showBackground={true} />
+      </EffectComposer>
     </Canvas>
   );
 };
 
 const ShaderImage = () => {
   return (
-    <div className="absolute w-screen h-screen flex jutsify-center items-center" >
-   
+    <div className="absolute w-screen h-screen flex jutsify-center items-center">
       <Scene />
     </div>
   );
@@ -99,8 +103,3 @@ const ShaderImage = () => {
 
 export default ShaderImage;
 
-/*
- * Template Credits : https://codesandbox.io/u/wrongakram
- * Image Credits: Unsplash; https://unsplash.com/@danesduet
- *
- */
