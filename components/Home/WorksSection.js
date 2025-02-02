@@ -77,7 +77,7 @@ const WorksSection = ({
               <motion.a
                 href={el.link}
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
                 transition={{
                   duration: 1.25,
                   ease: [0.43, 0.13, 0.23, 0.96],
@@ -111,7 +111,7 @@ const WorksSection = ({
               key={index}
               href={el.link}
               target="_blank"
-              rel="noopener"
+              rel="noreferrer"
               className="w-[70vmin] grid place-items-center h-[70vmin] mx-[5vw]"
             >
               <ImageLink elm={el} index={index} />

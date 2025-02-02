@@ -56,7 +56,7 @@ const WorkCard = ({ elm }) => {
       key={elm.text}
       href={elm.link}
       target="_blank"
-       rel="noopener"
+      rel="noreferrer"
       className="w-full flex flex-col gap-[1rem] uppercase"
     >
       <span>{elm.text}</span>
