@@ -10,6 +10,7 @@ const ScrollIndicator = ({ isGridVisible }) => {
         <div className="fixed top-[5.5rem] flex left-[12rem]  -translate-x-1/2  z-[999]">
           {imageArr?.map((_, i) => (
             <motion.div
+              key={`indicator-${i}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
