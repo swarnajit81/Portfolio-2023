@@ -28,7 +28,7 @@ const Meta = ({ title, keywords, description, imgContent }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imgContent} />
-      <link rel="canonical" href= {"https://specto.pl" + router.asPath?.split("?")[0]} />
+      <link rel="canonical" href= {"https://swarnajit.space" + router.asPath?.split("?")[0]} />
     </Head>
   );
 };

@@ -1,5 +1,3 @@
-
-
 export const commonClasses = {
   parentContainer: `w-[200vw] h-screen flex flex-nowrap overflow-y-hidden`,
   panel: `w-[100vw] h-full`,
@@ -24,13 +22,12 @@ export const imageArr = [
   {
     text: "Angels",
     img: "/images/angels.png",
-
   },
   {
     text: "City Models",
     img: "/images/citymodels.png",
   },
- 
+
   {
     text: "IMG Models",
     img: "/images/imgmodels.png",
@@ -52,12 +49,50 @@ export const imageArr = [
     img: "/images/rebellion.png",
   },
 
-   {
+  {
     text: "WModels",
     img: "/images/wmgmt.png",
   },
-   {
+  {
     text: "Prodigy",
     img: "/images/prodigy.png",
   },
 ];
+
+const words = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+  "eleven",
+  "twelve",
+  "thirteen",
+  "fourteen",
+  "fifteen",
+  "sixteen",
+  "seventeen",
+  "eighteen",
+  "nineteen",
+  "twenty",
+  "twenty-one",
+  "twenty-two",
+  "twenty-three",
+  "twenty-four",
+  "twenty-five",
+  "twenty-six",
+  "twenty-seven",
+  "twenty-eight",
+  "twenty-nine",
+  "thirty",
+];
+
+export const getMyAge = () => {
+  return words[Number(new Date().getFullYear()) - 1998];
+};

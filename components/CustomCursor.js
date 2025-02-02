@@ -1,5 +1,6 @@
 import { AppContext } from "@context/AppContext";
 import { useState, useEffect, useContext } from "react";
+import {motion} from 'framer-motion'
 
 const Cursor = () => {
   const { cursorStyle } = useContext(AppContext);
@@ -30,12 +31,13 @@ const Cursor = () => {
     setMousePos({ x: clientX, y: clientY });
   };
   return (
-    <div
+    <motion.div
+    animat
+    animate={{left : mousePos.x , top :mousePos.y}}
+    transition={{type:"tween" , ease: "backOut"}}
       style={{
         width: cursorStyle == "hovered" && "8rem",
-        height: cursorStyle == "hovered" && "8rem",
-        left: `${mousePos.x}px`,
-        top: `${mousePos.y}px`,
+        height: cursorStyle == "hovered" && "8rem",      
         backdropFilter: cursorStyle == "hovered" && "blur(10px)",
         background: cursorStyle == "hovered" && "transparent",
         transition:
@@ -50,7 +52,7 @@ const Cursor = () => {
       >
         open <br /> link!
       </p>
-    </div>
+    </motion.div>
   );
 };
 

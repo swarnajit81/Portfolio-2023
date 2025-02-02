@@ -1,6 +1,7 @@
 import React , {useRef} from "react";
 import {gsap} from 'gsap'
 import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect";
+import { getMyAge } from "@utils/index";
 
 
 const AboutSection = ({firstSent , secondSent , aboutSectionRef , aboutImageRef}) => {
@@ -44,7 +45,7 @@ const AboutSection = ({firstSent , secondSent , aboutSectionRef , aboutImageRef}
       </div>
       <div className="pl-[25rem] mix-blend- mix-blend-difference text-[6vw] font-montreal " >
         <p ref={firstSent}> <span className="font-playfair italic" >Hey!</span> I&apos;m Swarnajit </p>
-        <p>a twenty-five years  <span className="font-playfair italic" >old</span></p>
+        <p>a {getMyAge()} years  <span className="font-playfair italic" >old</span></p>
         <p   ref={secondSent} >front-end developer. Currently</p>
         <p>based in <s>France</s> India</p>
       </div>

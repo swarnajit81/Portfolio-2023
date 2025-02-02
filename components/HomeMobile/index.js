@@ -1,9 +1,10 @@
-import LandingSection from '@components/Home/LandingSection'
 import React from 'react'
 import HomeTopMobile from './HomeTopMobile'
 import HorizontalMarquee from './HorizontalMarquee'
 import SelectedWorks from './SelectedWorks'
 import AboutSectionMobile from './AboutSectionMobile'
+import StackBenefits from './StackBenefits'
+import ContactMe from './ContactMe'
 
 const index = () => {
   const marqueeText = `Swarnajits  Portfolio ${new Date().getFullYear()}`;
@@ -16,6 +17,8 @@ const index = () => {
       <HorizontalMarquee marqueeText={"Know more about me  Know more about me"} />
       <AboutSectionMobile />
       <HorizontalMarquee marqueeText={"Stack & Benfits  Stack & Benfits "} />
+      <StackBenefits />
+      <ContactMe />
     </div>
   )
 }
