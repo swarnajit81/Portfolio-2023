@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }) {
             href="/apple-touch-icon.png"
           />
           <link rel="manifest" href="/site.webmanifest" />
+          <link rel="icon" href="/favicon.ico" />
         </Head>
         <Component {...pageProps} />
       </Layout>
