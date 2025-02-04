@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <GlobalState>
       <Layout>
-        <Cursor />
         <Head>
           <link
             rel="icon"
@@ -23,9 +22,14 @@ function MyApp({ Component, pageProps }) {
             sizes="180x180"
             href="/apple-touch-icon.png"
           />
+          <meta
+            name="apple-mobile-web-app-title"
+            content="Swarnajit's Portfolio"
+          />
           <link rel="manifest" href="/site.webmanifest" />
-          <link rel="icon" href="/favicon.ico" />
         </Head>
+        <Cursor />
+
         <Component {...pageProps} />
       </Layout>
     </GlobalState>
