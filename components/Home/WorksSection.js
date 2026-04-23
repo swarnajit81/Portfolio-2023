@@ -5,6 +5,7 @@ import ScrollIndicator from "@components/Common/ScrollIndicator";
 import VerticleMarquee from "@components/Common/VerticleMarquee";
 import { defaultTransition, imageArr } from "@utils/index";
 import { useMotionValue, motion, useSpring } from "framer-motion";
+import Link from "next/link";
 import React, { useRef, useState } from "react";
 
 const WorksSection = ({
@@ -74,22 +75,24 @@ const WorksSection = ({
         >
           <div className="grid grid-cols-5">
             {imageArr?.map((el, index) => (
-              <motion.a
-                href={el.link}
-                target="_blank"
-                rel="noreferrer"
-                transition={{
-                  duration: 1.25,
-                  ease: [0.43, 0.13, 0.23, 0.96],
-                }}
-                layoutId={`content-${index}`}
+              <Link
                 key={`content-${index}`}
-                className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]"
+                href={`/work/${el.slug}`}
+                legacyBehavior
               >
-                <div className=" w-full h-full relative">
-                  <ImageLink elm={el} index={index} />
-                </div>
-              </motion.a>
+                <motion.a
+                  transition={{
+                    duration: 1.25,
+                    ease: [0.43, 0.13, 0.23, 0.96],
+                  }}
+                  layoutId={`content-${index}`}
+                  className="w-[25vw] px-[5vh] py-[4vh] h-[40vh]"
+                >
+                  <div className=" w-full h-full relative">
+                    <ImageLink elm={el} index={index} />
+                  </div>
+                </motion.a>
+              </Link>
             ))}
           </div>
         </motion.div>
@@ -104,18 +107,16 @@ const WorksSection = ({
           className={`h-[calc(1vh*100)] will-change-transform no-scroll-bar items-center overflow-x-auto overflow-y-hidden px-[10vmin]`}
         >
           {imageArr?.map((el, index) => (
-            <motion.a
-              layoutId={`content-${index}`}
-              id={`content-${index}`}
-              transition={{ duration: 1.25, ease: [0.43, 0.13, 0.23, 0.96] }}
-              key={index}
-              href={el.link}
-              target="_blank"
-              rel="noreferrer"
-              className="w-[70vmin] grid place-items-center h-[70vmin] mx-[5vw]"
-            >
-              <ImageLink elm={el} index={index} />
-            </motion.a>
+            <Link key={index} href={`/work/${el.slug}`} legacyBehavior>
+              <motion.a
+                layoutId={`content-${index}`}
+                id={`content-${index}`}
+                transition={{ duration: 1.25, ease: [0.43, 0.13, 0.23, 0.96] }}
+                className="w-[70vmin] grid place-items-center h-[70vmin] mx-[5vw]"
+              >
+                <ImageLink elm={el} index={index} />
+              </motion.a>
+            </Link>
           ))}
         </div>
       )}

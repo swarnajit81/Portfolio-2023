@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
+import { useRouter } from "next/router";
 
 const menuItems = [
   {
@@ -19,6 +20,7 @@ const menuItems = [
 const Menu = ({ isMenuOpend, setIsMenuOpend }) => {
   const menuContainerRef = React.useRef(null);
   const menuContainerOverlay = React.useRef(null);
+  const router = useRouter();
   const handleOpenAnimation = () => {
     gsap.to(menuContainerOverlay.current, {
       y: "100%",
@@ -56,15 +58,17 @@ const Menu = ({ isMenuOpend, setIsMenuOpend }) => {
   }, [isMenuOpend]);
 
   const scrollToLink = (elm) => {
-    const targetElement = document.getElementById(elm.id);
+    setIsMenuOpend(false);
 
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      console.error(`Element with id "${elm.id}" not found.`);
+    if (router.pathname !== "/") {
+      router.push(`/?section=${elm.id}`);
+      return;
     }
 
-    setIsMenuOpend(false);
+    const targetElement = document.getElementById(elm.id);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (

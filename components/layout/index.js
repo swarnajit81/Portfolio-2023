@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./navbar.component";
 import Preloader from "@components/Common/Preloader";
 import Meta from "@components/Common/meta";
+import PageTransition from "@components/Common/PageTransition";
 
 const Layout = ({ children }) => {
   return (
@@ -10,6 +11,7 @@ const Layout = ({ children }) => {
       <div className="w-full overflow-x-hidden font-montreal ">
         <Preloader />
         <Navbar />
+        <PageTransition />
         {children}
       </div>
     </>
