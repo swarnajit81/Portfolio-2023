@@ -1,4 +1,5 @@
 import { imageArr } from "@utils/index";
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "react-feather";
 
@@ -51,12 +52,10 @@ const WorkCard = ({ elm }) => {
   }, []); // Remove `isVisible` from dependencies
 
   return (
+    <Link href={`/work/${elm.slug}`} legacyBehavior>
     <a
       ref={imageContainer}
       key={elm.text}
-      href={elm.link}
-      target="_blank"
-      rel="noreferrer"
       className="w-full flex flex-col gap-[1rem] uppercase"
     >
       <span>{elm.text}</span>
@@ -84,5 +83,6 @@ const WorkCard = ({ elm }) => {
         </div>
       </div>
     </a>
+    </Link>
   );
 };

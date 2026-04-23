@@ -1,4 +1,4 @@
-Sitemap: https://www.swarnajit.space/sitemap.xml
+Sitemap: https://www.swarnajit.com/sitemap.xml
 
 User-agent: *
 Allow: /*

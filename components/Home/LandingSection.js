@@ -60,13 +60,13 @@ const LandingSection = () => {
   return (
     <div className="w-full h-full flex justify-center items-center font-montreal relative">
       <div className="flex pointer-events-none mix-blend-difference flex-col text-[7vw] items-center uppercase leading-[6.5vw] font-[500] z-10">
-        <div className="overflow-hidden">
+        <div >
           <p ref={line1}>Independent</p>
         </div>
-        <div className="overflow-hidden">
+        <div >
           <p ref={firstPara}>front-end</p>
         </div>
-        <div className="overflow-hidden">
+        <div >
           <p ref={secondPara}>web developer</p>
         </div>
         <div ref={thirdPara} className="text-[1.2vw] leading-[1.5vw] relative">

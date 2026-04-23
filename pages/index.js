@@ -1,8 +1,10 @@
 import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect";
 import SplitTextJS from "split-text-js";
 import { useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import LandingSection from "../components/Home/LandingSection";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
 import { gsap } from "gsap/dist/gsap";
 import WorksSection from "@components/Home/WorksSection";
 import AboutSection from "@components/Home/AboutSection";
@@ -11,9 +13,10 @@ import MoreAboutMe from "@components/Home/MoreAboutMe";
 import Contact from "@components/Home/Contact";
 import HomeMobileSection from "@components/HomeMobile/index";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Home() {
+  const router = useRouter();
   const containerRef = useRef(null);
   const landingSectionContainer = useRef(null);
   const workSectionRef = useRef(null);
@@ -35,6 +38,39 @@ export default function Home() {
     mm.add("(min-width: 1024px)", () => ScrollTrigger.refresh());
     return () => mm.revert();
   }, []);
+
+  // Incoming nav from detail page with ?section=... — scroll to section once layout ready.
+  const querySection = router.query.section;
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!querySection) return;
+
+    const run = () => {
+      const el = document.getElementById(querySection);
+      if (!el) return;
+      if (window.innerWidth >= 1024) {
+        ScrollTrigger.refresh();
+        gsap.to(window, {
+          scrollTo: el.offsetLeft + 500,
+          duration: 1.2,
+          ease: "expo.inOut",
+        });
+      } else {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      // Clear ?section= from URL without firing Next route events
+      // (router.replace would retrigger PageTransition mid-exit).
+      window.history.replaceState(
+        { ...window.history.state, as: "/", url: "/" },
+        "",
+        "/"
+      );
+    };
+
+    const t = setTimeout(run, 600);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [querySection]);
 
   useIsomorphicLayoutEffect(() => {
     const mm = gsap.matchMedia();

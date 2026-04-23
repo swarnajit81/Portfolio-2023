@@ -18,56 +18,14 @@ export const defaultTransition = {
   ease: [0.43, 0.13, 0.23, 0.96],
 };
 
-export const imageArr = [
-   {
-    text: "The Rebellion",
-    img: "/images/rebellion.png",
-    link: "https://therebellionmgmt.com/"
-  },
+import { works } from "@data/works";
 
-  {
-    text: "WModels",
-    img: "/images/wmgmt.png",
-    link: "https://www.wmgmt.co.uk/"
-  },
-  {
-    text: "Prodigy",
-    img: "/images/prodigy.png",
-    link: "https://www.prodigymanagement.com/"
-  },
-  {
-    text: "Angels",
-    img: "/images/angels.png",
-    link: "https://www.angelsproject.com/"
-  },
-  {
-    text: "City Models",
-    img: "/images/citymodels.png",
-    link: "https://www.city-models.com/",
-  },
-
-  {
-    text: "IMG Models",
-    img: "/images/imgmodels.png",
-    link: "https://imgmodels.com/"
-  },
-  {
-    text: "Lions",
-    img: "/images/lions.png",
-    link: "https://www.thelionsmanagement.com/"
-  },
-  {
-    text: "Nevs",
-    img: "/images/nevsmodels.png",
-    url:"https://www.nevsmodels.co.uk/"
-  },
-  {
-    text: "View Management",
-    img: "/images/view.png",
-    link: "https://www.viewmanagement.com/"
-  },
- 
-];
+export const imageArr = works.map((w) => ({
+  text: w.title,
+  img: w.cover,
+  link: w.link,
+  slug: w.slug,
+}));
 
 const words = [
   "zero",
