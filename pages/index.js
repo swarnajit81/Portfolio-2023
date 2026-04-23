@@ -31,9 +31,14 @@ export default function Home() {
   const contactSection = useRef(null);
 
 
+  useEffect(() => {
+    if (window.innerWidth < 1024) return;
+    ScrollTrigger.refresh();
+  }, []);
+
   useIsomorphicLayoutEffect(() => {
     if (window.innerWidth < 1024) return;
-    
+
     let maxWidth;
 
     const ctx = gsap.context((self) => {
@@ -137,7 +142,7 @@ export default function Home() {
     <div
       id="wrapper"
       ref={containerRef}
-      className={`w-[570vw] hidden lg:flex  h-[100svh] overflow-hidden flex-nowrap overscroll-none`}
+      className={`w-[570vw] hidden lg:flex  h-[100svh] overflow-hidden flex-nowrap`}
     >
 
       <section
