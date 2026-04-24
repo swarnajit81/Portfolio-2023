@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import React, { useRef, Suspense } from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { shaderMaterial, useTexture } from "@react-three/drei";
 import glsl from "babel-plugin-glsl/macro";
@@ -84,11 +84,12 @@ const Wave = ({ onReady }) => {
   );
 };
 
-const Scene = ({ onReady }) => {
+const Scene = ({ onReady, frameloop }) => {
   return (
     <Canvas
       camera={{ fov: 15, position: [0, 0, 5] }}
       dpr={[1, 1.5]}
+      frameloop={frameloop}
       gl={{
         antialias: false,
         powerPreference: "high-performance",
@@ -113,9 +114,26 @@ const Scene = ({ onReady }) => {
 };
 
 const ShaderImage = ({ onReady }) => {
+  const wrapRef = useRef(null);
+  const [active, setActive] = useState(true);
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0.01 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <div className="absolute w-screen h-screen flex justify-center items-center">
-      <Scene onReady={onReady} />
+    <div
+      ref={wrapRef}
+      className="absolute w-screen h-screen flex justify-center items-center"
+    >
+      <Scene onReady={onReady} frameloop={active ? "always" : "never"} />
     </div>
   );
 };

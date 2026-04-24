@@ -96,7 +96,7 @@ export default function Home() {
           scrollTrigger: {
             trigger: containerRef.current,
             pin: true,
-            scrub: 2,
+            scrub: 0.6,
             end: () => `+=${maxWidth}`,
           },
         });
@@ -105,7 +105,7 @@ export default function Home() {
           x: 200,
           scrollTrigger: {
             trigger: workSectionRef?.current,
-            scrub: 2,
+            scrub: 0.6,
             start: "left center",
             containerAnimation: scrollTween,
           },
@@ -117,7 +117,7 @@ export default function Home() {
             trigger: aboutSectionRef.current,
             start: "left right",
             end: "right left",
-            scrub: 2,
+            scrub: 0.6,
             containerAnimation: scrollTween,
           },
         });
@@ -128,7 +128,7 @@ export default function Home() {
             trigger: aboutSectionRef.current,
             start: "left right",
             end: "right left",
-            scrub: 2,
+            scrub: 0.6,
             containerAnimation: scrollTween,
           },
         });
@@ -139,7 +139,7 @@ export default function Home() {
             trigger: aboutSectionRef.current,
             start: "center right",
             end: "right left",
-            scrub: 2,
+            scrub: 0.6,
             containerAnimation: scrollTween,
           },
         });
@@ -150,7 +150,7 @@ export default function Home() {
             trigger: MAMSectionRef.current,
             start: "left right",
             end: "right left",
-            scrub: 2,
+            scrub: 0.6,
             containerAnimation: scrollTween,
           },
         });
@@ -164,7 +164,7 @@ export default function Home() {
               trigger: workSectionRef.current,
               start: "left right",
               end: "center center",
-              scrub: 2,
+              scrub: 0.6,
               containerAnimation: scrollTween,
             },
           });
