@@ -1,29 +1,52 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const StackBenefits = () => {
   return (
     <div id="stack-mobile" className="w-full flex flex-col">
-      <div className="px-5   pb-[3rem] border-b-[1px] border-white text-[1.2rem] font-light">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className="px-5   pb-[3rem] border-b-[1px] border-white text-[1.2rem] font-light"
+      >
         I usually work in vanilla javascript without frameworks for small
         projects, allowing me a complete freedom on the architecture, I prefer
         using convex or drizzle with postgres for my content management or
         backend, GSAP and framer-motion for animations with some glimpse of
         Three.js. For bigger works I usually Next.js and React.
-      </div>
+      </motion.div>
       <div className="flex flex-col font-light gap-[2rem] itmes-start">
         {skills?.map((el, i) => (
-          <div
+          <motion.div
             key={i}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{
+              duration: 0.8,
+              delay: i * 0.12,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="w-full px-5  py-[3rem] border-[#fff]  last:border-[transparent] border-b-[1px]"
           >
             <div className="flex font-normal items-end text-royal-orange gap-[10px]">
-              <span className="text-[1rem]">0{i + 1}.</span>
+              <motion.span
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.12 + 0.2 }}
+                className="text-[1rem]"
+              >
+                0{i + 1}.
+              </motion.span>
               <p className="text-[1.2rem] font-normal text-white uppercase">
                 {el.title}
               </p>
             </div>
             <p className="mt-[1.5rem] text-[1.2rem] ">{el.para}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

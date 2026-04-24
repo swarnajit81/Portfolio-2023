@@ -55,13 +55,21 @@ const WaveShaderMaterial = shaderMaterial(
 
 extend({ WaveShaderMaterial });
 
-const Wave = () => {
+const Wave = ({ onReady }) => {
   const ref = useRef();
-  useFrame(({ clock }) => (ref.current.uTime = clock.getElapsedTime()));
+  const readyRef = useRef(false);
 
   const image = useTexture(
     "https://images.unsplash.com/photo-1534312527009-56c7016453e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"
   );
+
+  useFrame(({ clock }) => {
+    if (ref.current) ref.current.uTime = clock.getElapsedTime();
+    if (!readyRef.current) {
+      readyRef.current = true;
+      if (onReady) onReady();
+    }
+  });
 
   return (
     <mesh>
@@ -76,7 +84,7 @@ const Wave = () => {
   );
 };
 
-const Scene = () => {
+const Scene = ({ onReady }) => {
   return (
     <Canvas
       camera={{ fov: 15, position: [0, 0, 5] }}
@@ -88,7 +96,7 @@ const Scene = () => {
       }}
     >
       <Suspense fallback={null}>
-        <Wave />
+        <Wave onReady={onReady} />
       </Suspense>
       <EffectComposer>
         <Fluid
@@ -104,10 +112,10 @@ const Scene = () => {
   );
 };
 
-const ShaderImage = () => {
+const ShaderImage = ({ onReady }) => {
   return (
     <div className="absolute w-screen h-screen flex justify-center items-center">
-      <Scene />
+      <Scene onReady={onReady} />
     </div>
   );
 };

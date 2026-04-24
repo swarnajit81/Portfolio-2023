@@ -1,7 +1,8 @@
 import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect";
-import React, { useRef } from "react";
+import React, { useCallback, useContext, useRef } from "react";
 import { gsap } from "gsap/dist/gsap";
 import dynamic from "next/dynamic";
+import { AppContext } from "@context/AppContext";
 
 const ShaderImage = dynamic(() => import("../ShaderImage/ShaderImage"), {
   ssr: false,
@@ -12,6 +13,10 @@ const LandingSection = () => {
   const secondPara = useRef(null);
   const thirdPara = useRef(null);
   const line1 = useRef(null);
+  const { setShaderReady } = useContext(AppContext);
+  const handleShaderReady = useCallback(() => setShaderReady(true), [
+    setShaderReady,
+  ]);
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -78,7 +83,7 @@ const LandingSection = () => {
         </div>
       </div>
 
-      <ShaderImage />
+      <ShaderImage onReady={handleShaderReady} />
     </div>
   );
 };
